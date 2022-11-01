@@ -37,15 +37,15 @@ const Home = ({ getPlantData }) => {
 
   let { currentUser } = useContext(UserContext);
   return (
-    <div className="row min-vh-100 justify-content-center align-items-center">
-      <div className="col-12">
+    <div className="min-vh-100 justify-content-center align-items-center">
+      <div>
         <h1 className="text-center">PlantGreen</h1>
         <p>Identify your plant!</p>
         {currentUser ? (
           <div>
             <h2>Welcome Back, {currentUser.username}!</h2>
             <form id="uploadForm">
-              <div className="text-center ng-tns-c72-2">
+              <div className="text-center">
                 {!loading ? (
                   <label htmlFor="fileUpload" className="btn btn-success mx-2">
                     <input
@@ -62,31 +62,57 @@ const Home = ({ getPlantData }) => {
                 )}
               </div>
             </form>
-            <div>
+
+            {/* CARD */}
+            <div className="card-group my-5 text-dark bg-gradient-primary text-white col">
               {plantResponse.d ? (
-                <div>
-                  <p>{plantResponse.d.id}</p>
+                <>
                   {plantResponse.d.suggestions.map((item) => {
                     return (
-                      <div>
-                        <p>
-                          {item.id} - {item.plant_name}
-                        </p>
-                        {item.similar_images.map((item) => {
-                          return (
-                            <li>
-                              <img src={item.url} alt="plant"></img>
-                            </li>
-                          );
-                        })}
+                      <div className="row">
+                        <div className="col">
+                          <div
+                            className="card w-75 border-warning bg-light mx-5 my-3"
+                            style={{ minWidth: "100%" }}
+                          >
+                            <ul className="list-group list-group-flush">
+                              <li className="list-group-item">
+                                Common Name: {item.plant_details.common_names}
+                              </li>
+                              <li className="list-group-item">
+                                Scientific Name:
+                                {item.plant_details.scientific_name}
+                              </li>
+                            </ul>
+                            {item.similar_images.map((item) => {
+                              return (
+                                <div>
+                                  <div className="card-body">
+                                    <h5 className="card-title">Card title</h5>
+                                    <p className="card-text">
+                                      Some quick example
+                                    </p>
+                                  </div>
+                                  <img
+                                    src={item.url}
+                                    style={{ width: "300px" }}
+                                    alt="plant"
+                                    className="card-img-bottom"
+                                  ></img>
+                                </div>
+                              );
+                            })}
+                          </div>
+                        </div>
                       </div>
                     );
                   })}
-                </div>
+                </>
               ) : (
-                <p>Nothing to see here for data</p>
+                <p className="text-dark">Nothing to see here for data</p>
               )}
             </div>
+            {/* END OF CARD */}
           </div>
         ) : (
           <p>

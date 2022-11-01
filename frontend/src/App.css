@@ -5,3 +5,8 @@
   align-items: center;
   text-align: center;
 }
+
+body {
+  background-color: rgb(5, 27, 5);
+  color: rgb(210, 217, 223);
+}
