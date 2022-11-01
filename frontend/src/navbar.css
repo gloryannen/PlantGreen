@@ -1,0 +1,12 @@
+.navbar {
+  display: flex;
+  justify-content: flex-end;
+  height: 75px;
+  width: 100vw;
+  padding-top: 0px;
+  background-color: rgb(255, 255, 255);
+  border-bottom: 1px solid rgb(162, 240, 165);
+}
+.navbar-brand {
+  margin-right: auto;
+}
