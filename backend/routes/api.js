@@ -1,10 +1,9 @@
 "use strict";
-
+require("dotenv").config();
 const axios = require("axios");
 const express = require("express");
 const router = new express.Router();
 const { ensureCorrectUserOrAdmin } = require("../middleware/auth");
-// const PlantKey = process.env.REACT_APP_PLANT_API_KEY;
 
 router.post("/plantdata", ensureCorrectUserOrAdmin, async function (req, res) {
   let plantFiles = req.body.plantFiles;
@@ -14,10 +13,10 @@ router.post("/plantdata", ensureCorrectUserOrAdmin, async function (req, res) {
 
   const headers = {
     "Content-Type": "application/json",
-    "Api-Key": "fp3KHp62ONF0alQ06sKAZiy9u9G6dM3KXvE2MPJOCVeK2sNwXK",
+    "Api-Key": process.env.REACT_APP_PLANT_API_KEY,
   };
   const data = {
-    api_key: "fp3KHp62ONF0alQ06sKAZiy9u9G6dM3KXvE2MPJOCVeK2sNwXK",
+    api_key: process.env.REACT_APP_PLANT_API_KEY,
     images: plantFileArray,
     modifiers: ["crops_fast", "similar_images"],
     plant_language: "en",
@@ -28,6 +27,9 @@ router.post("/plantdata", ensureCorrectUserOrAdmin, async function (req, res) {
       "wiki_description",
       "taxonomy",
       "synonyms",
+      "edible_parts",
+      "propagation_methods",
+      "watering",
     ],
   };
   await axios

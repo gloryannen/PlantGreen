@@ -3,7 +3,7 @@
 
 DROP DATABASE IF EXISTS plantgreen;
 CREATE DATABASE plantgreen;
-\connect plantgreen 
+\connect plantgreen
 
 DROP TABLE IF EXISTS user_saved_plants;
 DROP TABLE IF EXISTS plants;
@@ -15,7 +15,6 @@ DROP TABLE IF EXISTS users;
 \prompt 'Return for yes or control-C to cancel > ' foo 
 
 DROP DATABASE plantgreen_test;
-
 CREATE DATABASE plantgreen_test;
 
 \connect plantgreen_test

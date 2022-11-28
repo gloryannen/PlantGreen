@@ -22,7 +22,6 @@ class User {
    **/
 
   static async authenticate(username, password) {
-    // try to find the user first
     const result = await db.query(
       `SELECT username,
               email,
@@ -83,30 +82,6 @@ class User {
 
     return user;
   }
-
-  /** Find all users.
-   *
-   * Returns [{ username, email, is_admin }, ...]
-   **/
-
-  static async findAll() {
-    const result = await db.query(
-      `SELECT username,
-              email,
-              is_admin AS "isAdmin"
-        FROM users
-        ORDER BY username`
-    );
-
-    return result.rows;
-  }
-
-  /** Given a username, return data about user.
-   *
-   * Returns { is_admin }
-   *
-   * Throws NotFoundError if user not found.
-   **/
 
   static async get(username) {
     const userRes = await db.query(
@@ -180,6 +155,40 @@ class User {
     const user = result.rows[0];
 
     if (!user) throw new NotFoundError(`No user: ${username}`);
+  }
+
+  /** Save Plant: update db, returns undefined.
+   *
+   * - username: username saving plant
+   * - plant_id: plant_id
+   **/
+
+  static async savePlant(username, plantId) {
+    const preCheck = await db.query(
+      `SELECT id
+           FROM plants
+           WHERE id = $1`,
+      [plantId]
+    );
+    const plant = preCheck.rows[0];
+
+    if (!plant) throw new NotFoundError(`No plant: ${plantId}`);
+
+    const preCheck2 = await db.query(
+      `SELECT username
+           FROM users
+           WHERE username = $1`,
+      [username]
+    );
+    const user = preCheck2.rows[0];
+
+    if (!user) throw new NotFoundError(`No username: ${username}`);
+
+    await db.query(
+      `INSERT INTO user_saved_plants (plant_id, username)
+           VALUES ($1, $2)`,
+      [plantId, username]
+    );
   }
 }
 

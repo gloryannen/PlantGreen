@@ -1,128 +1,46 @@
 import { useContext } from "react";
 import { UserContext } from "./hooks/UserContext";
 import { Link } from "react-router-dom";
-import "./plantFileUpload";
-import { useState } from "react";
+import "./home.css";
 
-const Home = ({ getPlantData }) => {
-  const [loading, setIsLoading] = useState(false);
-  // const [isLoaded, setIsLoaded] = useState(false);
-  const [plantResponse, setPlantResponse] = useState({});
-
-  // Turn uploaded files into base64
-  const toBase64 = (file) =>
-    new Promise((resolve, reject) => {
-      const reader = new FileReader();
-      reader.readAsDataURL(file);
-      reader.onload = () => resolve(reader.result);
-      reader.onerror = (error) => reject(error);
-    });
-
-  async function handleChange(event) {
-    let plantFiles = event.target.files;
-
-    if (plantFiles.length > 0) {
-      setIsLoading(true);
-
-      let base64file = await toBase64(plantFiles[0]);
-      let plantData = await getPlantData(base64file);
-      const d = plantData.data;
-      console.log("D.data -------->", d);
-
-      setPlantResponse({ d });
-      setIsLoading(false);
-      console.log("PLANT RES", JSON.stringify(plantResponse));
-    }
-  }
-
+const Home = () => {
   let { currentUser } = useContext(UserContext);
+
   return (
-    <div className="min-vh-100 justify-content-center align-items-center">
-      <div>
-        <h1 className="text-center">PlantGreen</h1>
-        <p>Identify your plant!</p>
+    <div className="d-flex flex-column min-vh-100 justify-content-center align-items-center">
+      <div id="homeContainer" className="border rounded">
+        <h1 className="display-1 text-center my-5">🪴 PlantGreen 🪴</h1>
+        <ul className="fs-2 my-5">
+          Upload plant images to learn:
+          <br />
+          <p className="lead my-3 fs-4">
+            Scientific Name
+            <br />
+            Taxonomy
+            <br /> Propagation Methods
+            <br /> Edible Parts
+            <br /> Wiki Description
+            <br /> and more!
+          </p>
+        </ul>
         {currentUser ? (
           <div>
-            <h2>Welcome Back, {currentUser.username}!</h2>
-            <form id="uploadForm">
-              <div className="text-center">
-                {!loading ? (
-                  <label htmlFor="fileUpload" className="btn btn-success mx-2">
-                    <input
-                      className="form-control-file"
-                      id="fileUpload"
-                      type="file"
-                      multiple
-                      accept="image/*"
-                      onChange={handleChange}
-                    />
-                  </label>
-                ) : (
-                  <p>Loading~</p>
-                )}
-              </div>
-            </form>
-
-            {/* CARD */}
-            <div className="card-group my-5 text-dark bg-gradient-primary text-white col">
-              {plantResponse.d ? (
-                <>
-                  {plantResponse.d.suggestions.map((item) => {
-                    return (
-                      <div className="row">
-                        <div className="col">
-                          <div
-                            className="card w-75 border-warning bg-light mx-5 my-3"
-                            style={{ minWidth: "100%" }}
-                          >
-                            <ul className="list-group list-group-flush">
-                              <li className="list-group-item">
-                                Common Name: {item.plant_details.common_names}
-                              </li>
-                              <li className="list-group-item">
-                                Scientific Name:
-                                {item.plant_details.scientific_name}
-                              </li>
-                            </ul>
-                            {item.similar_images.map((item) => {
-                              return (
-                                <div>
-                                  <div className="card-body">
-                                    <h5 className="card-title">Card title</h5>
-                                    <p className="card-text">
-                                      Some quick example
-                                    </p>
-                                  </div>
-                                  <img
-                                    src={item.url}
-                                    style={{ width: "300px" }}
-                                    alt="plant"
-                                    className="card-img-bottom"
-                                  ></img>
-                                </div>
-                              );
-                            })}
-                          </div>
-                        </div>
-                      </div>
-                    );
-                  })}
-                </>
-              ) : (
-                <p className="text-dark">Nothing to see here for data</p>
-              )}
-            </div>
-            {/* END OF CARD */}
+            <h2>
+              Welcome Back, <strong>{currentUser.username}</strong>!
+            </h2>
+            <Link className="btn btn-lg btn-success mt-3" to="/plants">
+              Upload Plant
+            </Link>
           </div>
         ) : (
-          <p>
-            <Link className="btn btn-primary mx-2" to="/login">
+          <div>
+            <Link className="btn btn-lg btn-success mx-2" to="/login">
               Log in
             </Link>
-            <Link className="btn btn-primary mx-2" to="/signup">
+            <Link className="btn btn-lg btn-success mx-2" to="/signup">
               Sign up
             </Link>
-          </p>
+          </div>
         )}
       </div>
     </div>

@@ -11,13 +11,20 @@ function NavBar({ logout }) {
   return (
     <div className="navbar">
       <Navbar expand="md">
-        <NavLink to="/" className="navbar-brand mx-3">
+        <NavLink to="/" className="navbar-brand mx-3 fs-3">
           PlantGreen
         </NavLink>
         <Nav>
           {currentUser ? (
             <>
-              <NavItem className="mx-2">
+              <NavLink
+                className="navbar-link mx-2"
+                style={{ textDecoration: "none" }}
+                to="/plants"
+              >
+                Upload Plant
+              </NavLink>
+              <NavItem className="navbar-link mx-2">
                 <NavLink style={{ textDecoration: "none" }} to="/profile">
                   Profile
                 </NavLink>
@@ -28,8 +35,8 @@ function NavBar({ logout }) {
                   to="/"
                   onClick={logout}
                 >
-                  <p className="text-danger">
-                    <strong>Logout {currentUser.username}</strong>
+                  <p className="navbar-link">
+                    <strong className="logout">Logout</strong>
                   </p>
                 </NavLink>
               </NavItem>

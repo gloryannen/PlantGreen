@@ -125,4 +125,25 @@ router.delete(
   }
 );
 
+// /** POST /[username]/plant/[id]  { state } => { favorite }
+//  *
+//  * Returns {"saved": plantId}
+//  *
+//  * Authorization required: admin or same-user-as-:username
+//  * */
+
+// router.post(
+//   "/:username/plants/:id",
+//   ensureCorrectUserOrAdmin,
+//   async function (req, res, next) {
+//     try {
+//       const plantId = +req.params.id;
+//       await User.savePlant(req.params.username, plantId);
+//       return res.json({ saved: plantId });
+//     } catch (err) {
+//       return next(err);
+//     }
+//   }
+// );
+
 module.exports = router;

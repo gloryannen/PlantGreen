@@ -32,55 +32,57 @@ const Profile = () => {
 
     try {
       updatedUser = await PlantGreen.editUser(username, user);
-    } catch (error) {
-      console.log(error);
+    } catch (errors) {
+      console.log(errors);
     }
 
     setCurrentUser(updatedUser);
   }
 
   return (
-    <div className="mt-5">
-      <form>
-        <div className="mb-3">
-          <label className="form-label">
-            Username: <b>{formData.username}</b>
-          </label>
-        </div>
+    <div className="d-flex flex-column min-vh-100 justify-content-center align-items-center w-100">
+      <div className="formContainer col-12 border rounded">
+        <form>
+          <div className="mb-3">
+            <label className="col-4 form-label fs-3">
+              <strong>{formData.username}</strong>
+            </label>
+          </div>
 
-        <div className="mb-3">
-          <label className="form-label">
-            Email:
-            <input
-              className="form-control"
-              type="text"
-              name="email"
-              value={formData.email}
-              onChange={handleChange}
-            ></input>
-          </label>
-        </div>
+          <div className="mb-3">
+            <label className="col-4 form-label fs-3">
+              Email
+              <input
+                className="form-control"
+                type="text"
+                name="email"
+                value={formData.email}
+                onChange={handleChange}
+              ></input>
+            </label>
+          </div>
 
-        <div className="mb-3">
-          <label className="form-label">
-            Password:
-            <input
-              className="form-control"
-              type="text"
-              name="password"
-              value={formData.password}
-              onChange={handleChange}
-            ></input>
-          </label>
-        </div>
+          <div className="mb-3">
+            <label className="col-4 form-label fs-3">
+              Password
+              <input
+                className="form-control"
+                type="text"
+                name="password"
+                value={formData.password}
+                onChange={handleChange}
+              ></input>
+            </label>
+          </div>
 
-        <input
-          className="btn btn-primary"
-          type="submit"
-          value="Save"
-          onClick={handleSubmit}
-        />
-      </form>
+          <input
+            className="col-4 btn btn-success fs-3"
+            type="submit"
+            value="Save"
+            onClick={handleSubmit}
+          />
+        </form>
+      </div>
     </div>
   );
 };

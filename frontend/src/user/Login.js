@@ -21,7 +21,6 @@ const LoginForm = ({ login }) => {
   async function handleSubmit(e) {
     e.preventDefault();
     let result = await login(formData);
-    console.log("RESULT", result);
     if (result.success) {
       navigate("/");
     } else {
@@ -30,46 +29,49 @@ const LoginForm = ({ login }) => {
   }
 
   return (
-    <div className="col-12 mt-5">
-      {formErrors.map((e) => (
-        <h2 className="text-danger">{e}</h2>
-      ))}
-      <form>
-        <div className="mb-3">
-          <label className="col-4 form-label">
-            Username:
-            <input
-              className="form-control"
-              type="text"
-              name="username"
-              value={formData.username}
-              onChange={handleChange}
-            ></input>
-          </label>
-        </div>
+    <div className="d-flex flex-column min-vh-100 justify-content-center align-items-center w-100">
+      <h2 className="display-3 my-5">Login</h2>
+      <div className="formContainer col-12 border rounded">
+        {formErrors.map((e) => (
+          <h2 className="text-danger">{e}</h2>
+        ))}
+        <form>
+          <div className="mb-3">
+            <label className="col-4 form-label fs-3">
+              Username
+              <input
+                className="form-control"
+                type="text"
+                name="username"
+                value={formData.username}
+                onChange={handleChange}
+              ></input>
+            </label>
+          </div>
 
-        <div className="mb-3">
-          <label className="col-4 form-label">
-            Password:
-            <input
-              className="form-control"
-              type="text"
-              name="password"
-              value={formData.password}
-              onChange={handleChange}
-            ></input>
-          </label>
-        </div>
+          <div className="mb-3">
+            <label className="col-4 form-label fs-3">
+              Password
+              <input
+                className="form-control"
+                type="text"
+                name="password"
+                value={formData.password}
+                onChange={handleChange}
+              ></input>
+            </label>
+          </div>
 
-        <div className="mb-3">
-          <input
-            className="col-4 btn btn-primary"
-            type="submit"
-            value="Submit"
-            onClick={handleSubmit}
-          />
-        </div>
-      </form>
+          <div className="mb-3">
+            <input
+              className="col-4 btn btn-success fs-3"
+              type="submit"
+              value="Submit"
+              onClick={handleSubmit}
+            />
+          </div>
+        </form>
+      </div>
     </div>
   );
 };

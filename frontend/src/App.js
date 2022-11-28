@@ -3,29 +3,35 @@ import "./App.css";
 import PlantGreenApi from "./Api";
 import Routing from "./Routes";
 import NavBar from "./NavBar";
-import { UserContext } from "./hooks/UserContext";
+import LoadingSpinner from "./LoadingSpinner";
 import useLocalStorage from "./hooks/UseLocalStorage";
+import { UserContext } from "./hooks/UserContext";
 import { decodeToken } from "react-jwt";
 
 function App() {
-  const [token, setToken] = useLocalStorage("token" || null);
-  let [currentUser, setCurrentUser] = useState(null);
+  const [infoLoaded, setInfoLoaded] = useState(false);
+  const [token, setToken] = useLocalStorage("token");
+  const [currentUser, setCurrentUser] = useState(null);
 
   useEffect(
     function loadUserInfo() {
       console.debug("App useEffect loadUserInfo", "token=", token);
 
       async function getUser() {
-        if (token !== ("null" || null)) {
-          let username = decodeToken(token).username;
-          let currentUser = await PlantGreenApi.getUser(username);
-
-          PlantGreenApi.token = token;
-          setCurrentUser(currentUser);
-        } else {
-          setCurrentUser(null);
+        if (token !== null) {
+          try {
+            let username = decodeToken(token).username;
+            PlantGreenApi.token = token;
+            let currentUser = await PlantGreenApi.getUser(username);
+            setCurrentUser(currentUser);
+          } catch (errors) {
+            console.error("App loadUserInfo: problem loading", errors);
+            setCurrentUser(null);
+          }
         }
+        setInfoLoaded(true);
       }
+      setInfoLoaded(false);
       getUser();
     },
     [token]
@@ -33,8 +39,8 @@ function App() {
 
   async function signup(newUser) {
     try {
-      let token = await PlantGreenApi.registerUser(newUser);
-      setToken(token);
+      let resToken = await PlantGreenApi.registerUser(newUser);
+      setToken(resToken.token);
       return { success: true };
     } catch (errors) {
       return { success: false, errors };
@@ -51,6 +57,11 @@ function App() {
     }
   }
 
+  function logout() {
+    setToken(null);
+    setCurrentUser(null);
+  }
+
   async function getPlantData(plantFiles) {
     try {
       let plantData = await PlantGreenApi.getPlantData(plantFiles);
@@ -60,10 +71,7 @@ function App() {
     }
   }
 
-  function logout() {
-    setToken(null);
-    setCurrentUser(null);
-  }
+  if (!infoLoaded) return <LoadingSpinner />;
 
   return (
     <UserContext.Provider value={{ currentUser, setCurrentUser }}>

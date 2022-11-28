@@ -4,9 +4,37 @@
   height: 75px;
   width: 100vw;
   padding-top: 0px;
-  background-color: rgb(217, 248, 213);
-  border-bottom: 1px solid rgb(255, 255, 255);
+  /* background-color: rgb(255, 255, 255); */
+  border-bottom: 3px solid rgb(182, 182, 182);
+  background-color: rgba(51, 51, 51, 0.534);
 }
+
 .navbar-brand {
   margin-right: auto;
+  color: rgb(209, 223, 161);
+}
+
+.navbar-link {
+  margin: auto;
+  justify-items: center;
+}
+
+li > a,
+ul > a {
+  color: aliceblue;
+  font-size: 25px;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+}
+
+li > a:hover,
+ul > a:hover {
+  color: rgb(209, 223, 161);
+}
+
+.logout {
+  color: rgb(255, 119, 119);
+}
+
+.logout:hover {
+  color: rgb(180, 0, 0);
 }

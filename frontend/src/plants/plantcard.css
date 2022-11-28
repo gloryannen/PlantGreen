@@ -1,0 +1,32 @@
+.card-block {
+  font-size: 1em;
+  position: relative;
+  margin: 0;
+  padding: 1em;
+  border: none;
+  border-top: 1px solid rgba(34, 36, 38, 0.1);
+  box-shadow: none;
+}
+.card {
+  font-size: 1em;
+  overflow: hidden;
+  padding: 5;
+  border: none;
+  border-radius: 0.28571429rem;
+  box-shadow: 0 1px 3px 0 #157215, 0 0 0 1px #d4d4d5;
+  margin-top: 20px;
+}
+
+.toggleBtn {
+  font-size: larger;
+  font-weight: bold;
+  background-color: rgb(209, 223, 161);
+  color: rgb(56, 56, 56);
+  margin: 5px 2px;
+  padding: 10px 15px;
+  width: 250px;
+}
+
+.toggleBtn:hover {
+  background-color: rgb(105, 109, 94);
+}
