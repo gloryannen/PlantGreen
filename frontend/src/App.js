@@ -39,8 +39,7 @@ function App() {
 
   async function signup(newUser) {
     try {
-      let resToken = await PlantGreenApi.registerUser(newUser);
-      setToken(resToken.token);
+      await PlantGreenApi.registerUser(newUser);
       return { success: true };
     } catch (errors) {
       return { success: false, errors };

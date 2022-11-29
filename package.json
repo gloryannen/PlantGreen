@@ -1,0 +1,9 @@
+{
+  "name": "plantgreen",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "node backend/index.js"
+  },
+  "author": "Glory",
+  "license": "ISC"
+}

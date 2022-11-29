@@ -32,9 +32,11 @@ const SignUpForm = ({ signup }) => {
     <div className="d-flex flex-column min-vh-100 justify-content-center align-items-center w-100">
       <h2 className="display-3 my-5">Sign Up</h2>
       <div className="formContainer col-12 border rounded">
-        {formErrors.map((e) => (
-          // Slice removes the word "instance."" from error message
-          <h2 className="text-danger">{e.slice(9)}</h2>
+        {formErrors.map((e, idx) => (
+          // Slice removes the word "instance." from error message
+          <h2 className="text-danger" key={idx}>
+            {e.slice(9)}
+          </h2>
         ))}
         <form>
           <div className="mb-3">

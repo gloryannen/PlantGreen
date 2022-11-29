@@ -112,8 +112,8 @@ const PlantCard = ({ plant }) => {
                         <Collapse isOpen={taxonomyCollapse[idx]}>
                           <CardBody className="fs-5">
                             {Object.entries(item.plant_details.taxonomy).map(
-                              ([key, val], i) => (
-                                <p key={i}>
+                              ([key, val], idx) => (
+                                <p key={idx}>
                                   {key}: {val}
                                 </p>
                               )
@@ -135,9 +135,11 @@ const PlantCard = ({ plant }) => {
                         </Button>
                         <Collapse isOpen={propagationCollapse[idx]}>
                           <CardBody className="fs-5">
-                            {item.plant_details.propagation_methods.map((i) => {
-                              return <p>{i}</p>;
-                            })}
+                            {item.plant_details.propagation_methods.map(
+                              (i, idx) => {
+                                return <p key={idx}>{i}</p>;
+                              }
+                            )}
                             <hr />
                           </CardBody>
                         </Collapse>
@@ -156,8 +158,8 @@ const PlantCard = ({ plant }) => {
                         </Button>
                         <Collapse isOpen={edibleCollapse[idx]}>
                           <CardBody className="fs-5">
-                            {item.plant_details.edible_parts.map((i) => {
-                              return <p>{i}</p>;
+                            {item.plant_details.edible_parts.map((i, idx) => {
+                              return <p key={idx}>{i}</p>;
                             })}
                           </CardBody>
                         </Collapse>

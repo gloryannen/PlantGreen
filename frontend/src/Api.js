@@ -34,11 +34,7 @@ class PlantGreenApi {
 
   static async registerUser(newUser) {
     const res = await this.request("auth/register", newUser, "post");
-    if (res.success) {
-      return res.token;
-    } else {
-      return res;
-    }
+    return res;
   }
 
   static async login(user) {
@@ -52,7 +48,9 @@ class PlantGreenApi {
 
   static async getUser(username) {
     try {
-      const res = await this.request(`users/${username}`);
+      const res = await this.request(`users/${username}`, {
+        username: username,
+      });
       return res.user;
     } catch {
       return null;
