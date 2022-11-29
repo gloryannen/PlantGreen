@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/static/css/main.39879e41.css",
+    "main.js": "/static/js/main.71cc6bd5.js",
+    "static/js/787.cda612ba.chunk.js": "/static/js/787.cda612ba.chunk.js",
+    "static/media/claudio-testa-FrlCwXwbwkk-unsplash.png": "/static/media/claudio-testa-FrlCwXwbwkk-unsplash.3d6ba8bd22abb0ec6b07.png",
+    "index.html": "/index.html",
+    "main.39879e41.css.map": "/static/css/main.39879e41.css.map",
+    "main.71cc6bd5.js.map": "/static/js/main.71cc6bd5.js.map",
+    "787.cda612ba.chunk.js.map": "/static/js/787.cda612ba.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.39879e41.css",
+    "static/js/main.71cc6bd5.js"
+  ]
+}

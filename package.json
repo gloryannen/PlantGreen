@@ -2,7 +2,8 @@
   "name": "plantgreen",
   "version": "1.0.0",
   "scripts": {
-    "start": "node backend/index.js"
+    "start": "node backend/app.js",
+    "heroku-postbuild": "cd frontend && npm run build && cd ../backend ** npm start"
   },
   "author": "Glory",
   "license": "ISC"
