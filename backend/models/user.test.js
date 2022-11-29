@@ -6,7 +6,7 @@ const {
   UnauthorizedError,
 } = require("../expressError");
 const db = require("../db.js");
-const User = require("./user.js");
+const User = require("./users.js");
 const {
   commonBeforeAll,
   commonBeforeEach,
@@ -102,18 +102,6 @@ describe("register", function () {
     } catch (err) {
       expect(err instanceof BadRequestError).toBeTruthy();
     }
-  });
-});
-
-/************************************** findAll */
-
-describe("findAll", function () {
-  test("works", async function () {
-    const users = await User.findAll();
-    expect(users).toEqual([
-      { username: "u1", email: "u1@email.com", isAdmin: false },
-      { username: "u1", email: "u2@email.com", isAdmin: false },
-    ]);
   });
 });
 

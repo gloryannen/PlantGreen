@@ -15,7 +15,7 @@ describe("sqlForPartialUpdate", function () {
       { jsF2: "f2" }
     );
     expect(result).toEqual({
-      setCols: '"f1"=$1, "f2"=$2',
+      setCols: '"f1"=$1, "jsF2"=$2',
       values: ["v1", "v2"],
     });
   });
