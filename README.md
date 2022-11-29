@@ -1,7 +1,5 @@
 # PlantGreen
 
-# Link to Application
-
 ## Description
 
 Want to learn more about your current plants or found a mystery plant that you want information on? PlantGreen receives your plant image, and provides you with:
@@ -17,8 +15,8 @@ Sign Up or Login to start receiving information about your plants!!
 
 # Test Account
 
-- Username:
-- Password:
+- Username: testuser1
+- Password: password
 
 ### Installation
 
