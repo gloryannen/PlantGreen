@@ -35,7 +35,7 @@ const PlantsMain = () => {
   return (
     <>
       <div className="formWrapper">
-        <form id="uploadForm">
+        <form id="uploadForm" method="POST">
           <div className="input-group mb-3 my-3">
             <input
               className="form-control-file btn btn-success py-3 "

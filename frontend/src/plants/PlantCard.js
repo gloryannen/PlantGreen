@@ -11,6 +11,7 @@ import {
 import "./plantcard.css";
 
 const PlantCard = ({ plant }) => {
+  console.log("PlantCard Plant =====>", plant);
   const [edibleCollapse, setEdibleCollapse] = useState([]);
   const [propagationCollapse, setPropagationCollapse] = useState([]);
   const [taxonomyCollapse, setTaxonomyCollapse] = useState([]);

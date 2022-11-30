@@ -13,7 +13,8 @@ router.post("/plantdata", ensureCorrectUserOrAdmin, async function (req, res) {
 
   const headers = {
     "Content-Type": "application/json",
-    "Api-Key": process.env.REACT_APP_PLANT_API_KEY,
+    responseType: "json",
+    responseEncoding: "utf8",
   };
   const data = {
     api_key: process.env.REACT_APP_PLANT_API_KEY,
@@ -35,7 +36,6 @@ router.post("/plantdata", ensureCorrectUserOrAdmin, async function (req, res) {
   await axios
     .post("https://api.plant.id/v2/identify", data, headers)
     .then((response) => {
-      console.log("PlantID response ====>", res);
       return res.status(201).json({ data: response.data });
     })
     .catch((error) => {
