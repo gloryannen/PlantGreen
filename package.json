@@ -3,9 +3,6 @@
   "version": "1.0.0",
   "author": "Glory",
   "license": "ISC",
-  "engines": {
-    "node": "12.x"
-  },
   "scripts": {
     "start": "node backend/app.js",
     "dev": "nodemon backend/app.js",
