@@ -1,14 +1,12 @@
-"use strict";
-
 /** Express app for PlantGreen. */
 require("dotenv").config();
 
-const express = require("express");
-const cors = require("cors");
-const app = express();
 const path = require("path");
-
+const express = require("express");
 const PORT = process.env.PORT || 3001;
+
+const app = express();
+const cors = require("cors");
 
 const { NotFoundError } = require("./expressError");
 
