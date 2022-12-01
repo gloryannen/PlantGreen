@@ -8,10 +8,11 @@
   },
   "scripts": {
     "start": "node backend/app.js",
-    "heroku-postbuild": "cd frontend && npm start && npm run build && cd ../backend && npm start"
+    "heroku-postbuild": "cd frontend && yarn && yarn build && cd ../backend && yarn"
   },
   "dependencies": {
     "dotenv": "^16.0.3",
-    "express": "^4.18.1"
+    "express": "^4.18.1",
+    "yarn": "^1.22.19"
   }
 }
