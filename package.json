@@ -4,15 +4,11 @@
   "author": "Glory",
   "license": "ISC",
   "engines": {
-    "node": "14.x"
+    "node": "18.x"
   },
   "scripts": {
     "start": "node backend/app.js",
-    "dev": "nodemon backend/app.js",
-    "build": "cd frontend && npm run build",
-    "client": "cd frontend && npm start",
-    "install-client": "cd frontend && npm install",
-    "heroku-postbuild": "npm run install-client && npm run build"
+    "heroku-postbuild": "cd frontend && npm start && npm run build && cd ../backend && npm start"
   },
   "dependencies": {
     "dotenv": "^16.0.3",
