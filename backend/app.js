@@ -20,9 +20,9 @@ const morgan = require("morgan");
 app.use(cors());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json({ limit: "50mb" }));
-app.use(express.static(path.join(__dirname, "../frontend/build")));
+app.use(express.static(path.join(__dirname, "..", "frontend", "build")));
 app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname + "../frontend/build/index.html"));
+  res.sendFile(path.join(__dirname, "..", "frontend", "build", "index.html"));
 });
 app.use(morgan("tiny"));
 
