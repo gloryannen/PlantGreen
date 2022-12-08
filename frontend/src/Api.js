@@ -1,6 +1,6 @@
-import axios from "axios";
+const axios = require("axios");
 
-const BASE_URL = process.env.REACT_APP_BASE_URL || "http://localhost:3001";
+const BASE_URL = process.env.REACT_APP_BASE_URL || "";
 
 /** API Class.
  *
@@ -33,12 +33,12 @@ class PlantGreenApi {
   // Individual API routes
 
   static async registerUser(newUser) {
-    const res = await this.request("auth/register", newUser, "post");
+    const res = await this.request("api/auth/register", newUser, "post");
     return res;
   }
 
   static async login(user) {
-    const res = await this.request("auth/token", user, "post");
+    const res = await this.request("api/auth/token", user, "post");
     try {
       return res.token;
     } catch (errors) {
@@ -48,7 +48,7 @@ class PlantGreenApi {
 
   static async getUser(username) {
     try {
-      const res = await this.request(`users/${username}`, {
+      const res = await this.request(`api/users/${username}`, {
         username: username,
       });
       return res.user;
@@ -59,7 +59,7 @@ class PlantGreenApi {
 
   static async editUser(username, user) {
     try {
-      const res = await this.request(`users/${username}`, user, "patch");
+      const res = await this.request(`api/users/${username}`, user, "patch");
       return res.user;
     } catch (error) {
       return null;
@@ -69,7 +69,7 @@ class PlantGreenApi {
   static async getPlantData(plantFiles) {
     try {
       const res = await this.request(
-        "api/plantdata",
+        "api/plantId/plantdata",
         { plantFiles: plantFiles },
         "post"
       );

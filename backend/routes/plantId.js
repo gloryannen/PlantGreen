@@ -13,8 +13,6 @@ router.post("/plantdata", ensureCorrectUserOrAdmin, async function (req, res) {
 
   const headers = {
     "Content-Type": "application/json",
-    responseType: "json",
-    responseEncoding: "utf8",
   };
   const data = {
     api_key: process.env.REACT_APP_PLANT_API_KEY,
