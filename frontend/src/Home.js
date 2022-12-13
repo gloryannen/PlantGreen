@@ -7,7 +7,7 @@ const Home = () => {
   let { currentUser } = useContext(UserContext);
 
   return (
-    <div className="d-flex flex-column vh-100 justify-content-center align-items-center w-100">
+    <div className="d-flex flex-column justify-content-center align-items-center w-100 mt-3">
       <div id="homeContainer" className="border rounded">
         <h1 className="display-1 text-center my-5">🪴 PlantGreen 🪴</h1>
         <ul className="fs-2 my-5">

@@ -29,7 +29,7 @@ const LoginForm = ({ login }) => {
   }
 
   return (
-    <div className="d-flex flex-column vh-100 justify-content-center align-items-center w-100">
+    <div className="d-flex flex-column justify-content-center align-items-center w-100 mt-3">
       <h2 className="display-3 my-5">Login</h2>
       <div className="formContainer col-12 border rounded">
         {formErrors.map((e, idx) => (
