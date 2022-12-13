@@ -3,9 +3,9 @@ require("dotenv").config();
 const axios = require("axios");
 const express = require("express");
 const router = new express.Router();
-const { ensureCorrectUserOrAdmin } = require("../middleware/auth");
+const { ensureLoggedIn } = require("../middleware/auth");
 
-router.post("/plantdata", ensureCorrectUserOrAdmin, async function (req, res) {
+router.post("/plantdata", ensureLoggedIn, async function (req, res) {
   let plantFiles = req.body.plantFiles;
 
   // Turns files into array of strings

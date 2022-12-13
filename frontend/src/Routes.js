@@ -22,8 +22,6 @@ function PrivateRoutes() {
 function Routing({ login, signup }) {
   return (
     <Routes>
-      {/* General Routes */}
-      <Route exact path="/" element={<Home />}></Route>
       {/* Private Routes */}
       <Route element={<PrivateRoutes />}>
         <Route exact path="profile" element={<Profile />}></Route>
@@ -38,6 +36,8 @@ function Routing({ login, signup }) {
       ></Route>
       <Route exact path="login" element={<LoginForm login={login} />}></Route>
       {/* End of General Routes */}
+      {/* General Routes */}
+      <Route exact path="/" element={<Home />}></Route>
     </Routes>
   );
 }

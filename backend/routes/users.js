@@ -42,22 +42,6 @@ router.post("/", ensureAdmin, async function (req, res, next) {
   }
 });
 
-/** GET / => { users: [ { username, email }, ... ] }
- *
- * Returns list of all users.
- *
- * Authorization required: admin
- **/
-
-router.get("/", ensureAdmin, async function (req, res, next) {
-  try {
-    const users = await User.findAll();
-    return res.json({ users });
-  } catch (err) {
-    return next(err);
-  }
-});
-
 /** GET /[username] => { user }
  *
  * Returns { username, isAdmin }

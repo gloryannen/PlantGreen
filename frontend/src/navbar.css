@@ -1,10 +1,10 @@
 .navbar {
   display: flex;
   justify-content: flex-end;
+  flex-wrap: nowrap;
   height: 75px;
   width: 100vw;
   padding-top: 0px;
-  /* background-color: rgb(255, 255, 255); */
   border-bottom: 3px solid rgb(182, 182, 182);
   background-color: rgba(51, 51, 51, 0.534);
 }
@@ -22,7 +22,7 @@
 li > a,
 ul > a {
   color: aliceblue;
-  font-size: 25px;
+  font-size: 18px;
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
 }
 

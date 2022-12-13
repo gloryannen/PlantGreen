@@ -40,7 +40,7 @@ const Profile = () => {
   }
 
   return (
-    <div className="d-flex flex-column min-vh-100 justify-content-center align-items-center w-100">
+    <div className="d-flex flex-column vh-100 justify-content-center align-items-center w-100">
       <div className="formContainer col-12 border rounded">
         <form>
           <div className="mb-3">
@@ -67,7 +67,7 @@ const Profile = () => {
               Password
               <input
                 className="form-control"
-                type="text"
+                type="password"
                 name="password"
                 value={formData.password}
                 onChange={handleChange}

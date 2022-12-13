@@ -29,7 +29,7 @@ const LoginForm = ({ login }) => {
   }
 
   return (
-    <div className="d-flex flex-column min-vh-100 justify-content-center align-items-center w-100">
+    <div className="d-flex flex-column vh-100 justify-content-center align-items-center w-100">
       <h2 className="display-3 my-5">Login</h2>
       <div className="formContainer col-12 border rounded">
         {formErrors.map((e, idx) => (
@@ -37,7 +37,7 @@ const LoginForm = ({ login }) => {
             {e}
           </h2>
         ))}
-        <form>
+        <form className="my-3">
           <div className="mb-3">
             <label className="col-4 form-label fs-3">
               Username
@@ -56,7 +56,7 @@ const LoginForm = ({ login }) => {
               Password
               <input
                 className="form-control"
-                type="text"
+                type="password"
                 name="password"
                 value={formData.password}
                 onChange={handleChange}

@@ -7,7 +7,7 @@ const Home = () => {
   let { currentUser } = useContext(UserContext);
 
   return (
-    <div className="d-flex flex-column min-vh-100 justify-content-center align-items-center">
+    <div className="d-flex flex-column vh-100 justify-content-center align-items-center w-100">
       <div id="homeContainer" className="border rounded">
         <h1 className="display-1 text-center my-5">🪴 PlantGreen 🪴</h1>
         <ul className="fs-2 my-5">
@@ -33,11 +33,11 @@ const Home = () => {
             </Link>
           </div>
         ) : (
-          <div>
-            <Link className="btn btn-lg btn-success mx-2" to="/login">
+          <div className="my-5">
+            <Link className="btn btn-lg btn-success mx-2 my-1" to="/login">
               Log in
             </Link>
-            <Link className="btn btn-lg btn-success mx-2" to="/signup">
+            <Link className="btn btn-lg btn-success mx-2 my-1" to="/signup">
               Sign up
             </Link>
           </div>
