@@ -23,13 +23,13 @@ Sign Up or Login to start receiving information about your plants!!
 First, you need to clone this repository:
 
 ```bash
-$ git@github.com:lenuvia/PlantGreen.git
+$ git@github.com:gloryannen/PlantGreen.git
 ```
 
 Or:
 
 ```bash
-$ git clone https://github.com/lenuvia/PlantGreen.git
+$ git clone https://github.com/gloryannen/PlantGreen.git
 ```
 
 Then change into the `backend` folder:
